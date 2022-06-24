@@ -19,7 +19,7 @@ export const Search = () => {
         type="text"
         value={search}
         onKeyDown={(e) => {
-          e.key === "Enter" && handleSearch();
+          e?.key === "Enter" && handleSearch();
         }}
         placeholder="Seach Googl or type URL"
         onChange={(e) => setSearch(e.target.value)}
