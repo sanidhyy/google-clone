@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useDebounce } from "use-debounce";
+import React, { useState } from "react";
 
 import { useResultContext } from "../contexts/ResultContextProvider";
 import { Links } from "./Links";
