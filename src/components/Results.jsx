@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import ReactPlayer from "react-player";
 
 import { useResultContext } from "../contexts/ResultContextProvider";
 import { Loading } from "./Loading";
@@ -13,7 +12,7 @@ export const Results = () => {
   useEffect(() => {
     if (searchTerm) {
       if (location.pathname === "/videos") {
-        getResults(`/search/q=${searchTerm} videos`);
+        getResults(`/video/q=${searchTerm}&num=40`);
       } else if (location.pathname === "/images") {
         getResults(`/image/q=${searchTerm}&num=40`);
       } else {
@@ -96,15 +95,22 @@ export const Results = () => {
     case "/videos":
       return (
         <div className="flex flex-wrap">
-          {results?.map((video, i) => (
+          {results?.map(({ link, title }, i) => (
             <div key={i} className="p-2">
-              {video?.additional_links?.[0].href && (
-                <ReactPlayer
-                  url={video.additional_links?.[0].href}
-                  controls
+              {link && (
+                <iframe
                   width="355px"
                   height="200px"
-                />
+                  src={
+                    link.includes("/watch?v=")
+                      ? link.replace("/watch?v=", "/embed/")
+                      : link
+                  }
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  title={title}
+                ></iframe>
               )}
             </div>
           ))}

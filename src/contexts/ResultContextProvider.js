@@ -8,6 +8,15 @@ export const ResultContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("Elon Musk");
 
+  const matchYoutubeUrl = (url) => {
+    var p =
+      /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+    if (url?.match(p)) {
+      return true;
+    }
+    return false;
+  };
+
   const getResults = async (type) => {
     setIsLoading(true);
 
@@ -27,6 +36,13 @@ export const ResultContextProvider = ({ children }) => {
       setResults(data.entries);
     } else if (type.includes("/image")) {
       setResults(data.image_results);
+    } else if (type.includes("/video")) {
+      const filteredResults = [];
+      data.results.map((result) => {
+        if (matchYoutubeUrl(result.link)) filteredResults.push(result);
+      });
+
+      setResults(filteredResults);
     } else {
       setResults(data.results);
     }
