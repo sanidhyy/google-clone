@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Navigate } from "react-router-dom";
 
 import { useResultContext } from "../contexts/ResultContextProvider";
 import { Loader } from "./Loader";
 import BgImage from "../assets/images/bg.svg";
 
+// Results
 export const Results = () => {
   const { results, isLoading, getResults, searchTerm } = useResultContext();
   const location = useLocation();
 
+  // fetch Results
   useEffect(() => {
     if (searchTerm) {
       if (location.pathname === "/videos") {
@@ -21,8 +23,10 @@ export const Results = () => {
     }
   }, [searchTerm, location.pathname]);
 
+  // Loading
   if (isLoading) return <Loader />;
 
+  // No Results Found
   if (!results?.length)
     return (
       <div className="flex justify-center items-center w-full h-full flex-col">
@@ -32,15 +36,18 @@ export const Results = () => {
     );
 
   switch (location.pathname) {
+    // search page
     case "/search":
       return (
         <div className="flex flex-wrap justify-between space-y-6 sm:px-56">
           {results?.map(({ link, title }, i) => (
             <div key={i} className="md:w-2/5 w-full">
               <a href={link} target="_blank" rel="noreferrer">
+                {/* Link */}
                 <p className="text-sm">
                   {link.length > 30 ? link.substring(0, 30) : link}
                 </p>
+                {/* Title */}
                 <p className="text-lg hover:underline dark:text-blue-300 text-blue-700">
                   {title}
                 </p>
@@ -49,6 +56,7 @@ export const Results = () => {
           ))}
         </div>
       );
+    // images page
     case "/images":
       return (
         <div className="flex flex-wrap justify-center items-center">
@@ -60,12 +68,15 @@ export const Results = () => {
               rel="noreferrer"
               className="sm:p-3 p-5"
             >
+              {/* Image */}
               <img src={image?.src} alt={title} loading="lazy" />
+              {/* Title */}
               <p className="w-36 break-words text-sm mt-2">{title}</p>
             </a>
           ))}
         </div>
       );
+    // news page
     case "/news":
       return (
         <div className="flex flex-wrap justify-between space-y-6 sm:px-56 items-center">
@@ -78,11 +89,13 @@ export const Results = () => {
                   rel="noreferrer"
                   className="hover:underline"
                 >
+                  {/* Title */}
                   <p className="text-lg dark:text-blue-300 text-blue-700">
                     {title}
                   </p>
                 </a>
                 <div className="flex gap-4">
+                  {/* Source Link */}
                   <a href={source?.href} target="_blank" rel="noreferrer">
                     {source?.href}
                   </a>
@@ -92,18 +105,20 @@ export const Results = () => {
           })}
         </div>
       );
+    // videos page
     case "/videos":
       return (
         <div className="flex flex-wrap">
           {results?.map(({ link, title }, i) => (
             <div key={i} className="p-2">
-              {link && (
+              {/* Video frame */}
+              {typeof link === "string" && (
                 <iframe
                   width="355px"
                   height="200px"
                   src={
-                    link.includes("/watch?v=")
-                      ? link.replace("/watch?v=", "/embed/")
+                    link?.includes("/watch?v=")
+                      ? link?.replace("/watch?v=", "/embed/")
                       : link
                   }
                   frameBorder="0"
@@ -116,7 +131,8 @@ export const Results = () => {
           ))}
         </div>
       );
+    // Incorrect Route
     default:
-      return "ERROR!";
+      return <Navigate to="/search" />;
   }
 };
