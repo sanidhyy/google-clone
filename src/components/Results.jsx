@@ -4,6 +4,7 @@ import ReactPlayer from "react-player";
 
 import { useResultContext } from "../contexts/ResultContextProvider";
 import { Loading } from "./Loading";
+import BgImage from "../assets/images/bg.svg";
 
 export const Results = () => {
   const { results, isLoading, getResults, searchTerm } = useResultContext();
@@ -22,6 +23,14 @@ export const Results = () => {
   }, [searchTerm, location.pathname]);
 
   if (isLoading) return <Loading />;
+
+  if (!results?.length)
+    return (
+      <div className="flex justify-center items-center w-full h-full flex-col">
+        <img src={BgImage} alt="No Results Found." className="w-5/6 md:w-3/6" />
+        <h1 className="text-2xl">No Results Found.</h1>
+      </div>
+    );
 
   switch (location.pathname) {
     case "/search":
