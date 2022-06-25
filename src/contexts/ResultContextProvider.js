@@ -38,7 +38,7 @@ export const ResultContextProvider = ({ children }) => {
       setResults(data.image_results);
     } else if (type.includes("/video")) {
       const filteredResults = [];
-      data.results.map((result) => {
+      data.results?.map((result) => {
         if (matchYoutubeUrl(result.link)) filteredResults.push(result);
       });
 
