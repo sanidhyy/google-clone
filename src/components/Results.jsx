@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 import { useResultContext } from "../contexts/ResultContextProvider";
-import { Loading } from "./Loading";
+import { Loader } from "./Loader";
 import BgImage from "../assets/images/bg.svg";
 
 export const Results = () => {
@@ -21,7 +21,7 @@ export const Results = () => {
     }
   }, [searchTerm, location.pathname]);
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <Loader />;
 
   if (!results?.length)
     return (
