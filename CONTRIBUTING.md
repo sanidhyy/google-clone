@@ -1,7 +1,7 @@
 ## Contributing
 
-[fork]: /fork
-[pr]: /compare
+[fork]: https://github.com/Technical-Shubham-tech/google-clone/fork
+[pr]: https://github.com/Technical-Shubham-tech/google-clone/compare
 [style]: https://standardjs.com/
 [code-of-conduct]: CODE_OF_CONDUCT.md
 
