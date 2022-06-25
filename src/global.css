@@ -1,3 +1,8 @@
+/************************************
+* This is a tailwind css preset file.
+* Don't remove anything from here
+**************************************/
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -3,10 +3,12 @@ import React, { useState } from "react";
 import { useResultContext } from "../contexts/ResultContextProvider";
 import { Links } from "./Links";
 
+// Search
 export const Search = () => {
-  const [search, setSearch] = useState("Elon Musk");
+  const [search, setSearch] = useState("Github");
   const { setSearchTerm } = useResultContext();
 
+  // handle search
   const handleSearch = () => {
     if (search.trim().length !== 0) {
       setSearchTerm(search);
@@ -15,6 +17,7 @@ export const Search = () => {
 
   return (
     <div className="relative sm:ml-48 md:ml-72 sm:-mt-10 mt-3">
+      {/* Search Input */}
       <input
         type="text"
         value={search}
@@ -25,6 +28,8 @@ export const Search = () => {
         onChange={(e) => setSearch(e.target.value)}
         className="sm:w-96 w-80 h-10 dark:bg-gray-200 border rounded-full shadow-sm outline-none p-6 text-black hover:shadow-lg"
       />
+
+      {/* Search Button */}
       <button
         type="button"
         className="absolute top-1.5 right-4 text-2xl text-gray-500"
@@ -32,6 +37,8 @@ export const Search = () => {
       >
         🔎
       </button>
+
+      {/* Links */}
       <Links />
     </div>
   );

@@ -1,13 +1,18 @@
 import React, { createContext, useContext, useState } from "react";
 
+// Create context
 const ResultContext = createContext();
+
+// API Base URL
 const baseURL = "https://google-search3.p.rapidapi.com/api/v1";
 
+// Result Context Provider
 export const ResultContextProvider = ({ children }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("Elon Musk");
 
+  // check youtube url
   const matchYoutubeUrl = (url) => {
     var p =
       /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
@@ -17,6 +22,7 @@ export const ResultContextProvider = ({ children }) => {
     return false;
   };
 
+  // fetch results from api
   const getResults = async (type) => {
     setIsLoading(true);
 
@@ -32,6 +38,7 @@ export const ResultContextProvider = ({ children }) => {
 
     const data = await response.json();
 
+    // check data type
     if (type.includes("/news")) {
       setResults(data.entries);
     } else if (type.includes("/image")) {

@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+// Navbar Links
 const links = [
   { url: "/search", text: "🔎 All" },
   { url: "/news", text: "📰 News" },
@@ -8,9 +9,11 @@ const links = [
   { url: "/videos", text: "📺 Videos" },
 ];
 
+// Links
 export const Links = () => {
   return (
     <div className="flex sm:justify-around justify-between items-center mt-4">
+      {/* show all links */}
       {links.map(({ url, text }, i) => (
         <NavLink
           className={({ isActive }) => {
