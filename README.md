@@ -22,7 +22,7 @@ REACT_APP_RAPID_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 4. Now, to setup API, go to [Rapid API Website](https://rapidapi.com/) and create an account.
 
-5. Subscribe to this API to fetch search results: [API: Real-Time SERP Data](https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-serp-data). The BASIC plan includes 100 free requests per month. Each search tab uses one request.
+5. Subscribe to this API to fetch search results: [API: Real-Time SERP Data](https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-serp-data).
 
 ![Copy API Key](https://user-images.githubusercontent.com/71302066/175766174-58a0779b-71ea-4f64-af87-2e23fedd0a7b.png)
 
