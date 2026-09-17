@@ -14,7 +14,12 @@ if (!root) {
 
 createRoot(root).render(
   <ResultContextProvider>
-    <Router>
+    <Router
+      future={{
+        v7_relativeSplatPath: true,
+        v7_startTransition: true,
+      }}
+    >
       <App />
     </Router>
   </ResultContextProvider>,
