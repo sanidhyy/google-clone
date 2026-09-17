@@ -1,7 +1,5 @@
-import React from "react";
 import { Puff } from "react-loader-spinner";
 
-// Loader
 export const Loader = () => {
   return (
     <div className="flex justify-center items-center">
