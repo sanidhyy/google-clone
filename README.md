@@ -1,4 +1,4 @@
-# Googl - A React JS Google Search Engine Clone
+# Googl - A React TypeScript Google Search Engine Clone
 
 ![React JS Google Clone](https://user-images.githubusercontent.com/71302066/175765913-09fb0722-9969-4682-bfa2-9581fcc0c5a2.png)
 
@@ -12,7 +12,7 @@
 
 ## ⚠️ Before you start
 
-1. Make sure **Git** and **NodeJS** is installed
+1. Make sure **Git** and **Node.js 22.12+** are installed.
 2. Create `.env` file in root folder.
 3. Contents of **.env**
 
@@ -36,9 +36,10 @@ The app calls `/api/search` (a Netlify Function). That endpoint is public; the R
 
 1. Clone this **repository** to your local computer.
 2. Open **terminal** in root directory.
-3. Type and Run `npm install` or `pnpm install`.
-4. Once packages are installed, you can start this app using `npm run start` or `pnpm start`
-5. Now app is fully configured and you can start using this app :+1:
+3. Run `pnpm install`.
+4. Start the app with `pnpm start` (or `pnpm dev`).
+5. Check the project with `pnpm lint` and `pnpm build`.
+6. Now the app is fully configured and you can start using it.
 
 ### Need Help?
 
@@ -50,11 +51,15 @@ If you run into issues during installation or setup:
 
 ## 📃 Built with
 
-[<img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" width="150" height="40" />](https://www.javascript.com/)
+[<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" width="150" height="40" />](https://www.typescriptlang.org/)
 
-[<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" width="150" />](https://reactjs.org/)
+[<img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" width="150" />](https://vite.dev/)
+
+[<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" width="150" />](https://react.dev/)
 
 [<img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" width="150" />](https://tailwindcss.com/)
+
+[<img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" width="150" />](https://www.netlify.com/)
 
 [<img src="https://user-images.githubusercontent.com/71302066/174567516-824b1967-5954-4ac7-9446-14a3b2ab825d.svg" alt="Rapid API">](https://rapidapi.com/)
 
