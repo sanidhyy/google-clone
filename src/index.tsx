@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router";
 
 import App from "./App";
 import { ResultContextProvider } from "./contexts/ResultContextProvider";
@@ -14,12 +14,7 @@ if (!root) {
 
 createRoot(root).render(
   <ResultContextProvider>
-    <Router
-      future={{
-        v7_relativeSplatPath: true,
-        v7_startTransition: true,
-      }}
-    >
+    <Router>
       <App />
     </Router>
   </ResultContextProvider>,
