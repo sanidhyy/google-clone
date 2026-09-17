@@ -13,21 +13,20 @@
 ## ⚠️ Before you start
 
 1. Make sure **Git** and **NodeJS** is installed
-2. **Yarn** is faster than Npm. So use [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/).
-3. Create .env file in root folder.
-4. Contents of **.env**
+2. Create .env file in root folder.
+3. Contents of **.env**
 
 ```
 REACT_APP_RAPID_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-5. Now, to setup API, go to [Rapid API Website](https://rapidapi.com/) and create an account.
+4. Now, to setup API, go to [Rapid API Website](https://rapidapi.com/) and create an account.
 
-6. Enable this API to fetch google search results: [API: Google Search by apigeek](https://rapidapi.com/apigeek/api/google-search3/).
+5. Enable this API to fetch google search results: [API: Google Search by apigeek](https://rapidapi.com/apigeek/api/google-search3/).
 
 ![Copy API Key](https://user-images.githubusercontent.com/71302066/175766174-58a0779b-71ea-4f64-af87-2e23fedd0a7b.png)
 
-7. After enabling you can get your API Keys and paste them in `.env` file in `REACT_APP_RAPID_API_KEY`.
+6. After enabling you can get your API Keys and paste them in `.env` file in `REACT_APP_RAPID_API_KEY`.
 
 **NOTE:** Make sure you don't share these keys publicaly.
 
@@ -35,8 +34,8 @@ REACT_APP_RAPID_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 1. Clone this **repository** to your local computer.
 2. Open **terminal** in root directory.
-3. Type and Run `npm install` or `yarn install`.
-4. Once packages are installed, you can start this app using `npm run dev` or `yarn dev`
+3. Type and Run `npm install` or `pnpm install`.
+4. Once packages are installed, you can start this app using `npm run start` or `pnpm start`
 5. Now app is fully configured and you can start using this app :+1:
 
 ### Need Help?
