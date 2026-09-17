@@ -65,7 +65,7 @@ export const Results = () => {
               className="sm:p-3 p-5"
             >
               <img src={image.src} alt={link.title} loading="lazy" />
-              <p className="w-36 break-words text-sm mt-2">{link.title}</p>
+              <p className="w-36 wrap-break-word text-sm mt-2">{link.title}</p>
             </a>
           ))}
         </div>
