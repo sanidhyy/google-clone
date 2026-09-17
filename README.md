@@ -13,11 +13,11 @@
 ## ⚠️ Before you start
 
 1. Make sure **Git** and **NodeJS** is installed
-2. Create .env file in root folder.
+2. Create `.env` file in root folder.
 3. Contents of **.env**
 
 ```
-REACT_APP_RAPID_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+RAPID_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
 4. Now, to setup API, go to [Rapid API Website](https://rapidapi.com/) and create an account.
@@ -26,9 +26,11 @@ REACT_APP_RAPID_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ![Copy API Key](https://user-images.githubusercontent.com/71302066/175766174-58a0779b-71ea-4f64-af87-2e23fedd0a7b.png)
 
-6. After subscribing, copy your RapidAPI app key and paste it in `.env` as `REACT_APP_RAPID_API_KEY`.
+6. After subscribing, copy your RapidAPI app key and paste it in `.env` as `RAPID_API_KEY`. Also set the same `RAPID_API_KEY` in the Netlify UI with Functions scope. Do not prefix it with `VITE_` or `REACT_APP_` — those prefixes would expose the key in the client bundle.
 
-**NOTE:** Make sure you don't share these keys publicaly.
+The app calls `/api/search` (a Netlify Function). That endpoint is public; the RapidAPI key stays on the server.
+
+**NOTE:** Make sure you don't share these keys publically.
 
 ## 📌 How to use this App?
 

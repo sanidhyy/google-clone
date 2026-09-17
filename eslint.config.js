@@ -26,4 +26,13 @@ export default defineConfig([
       ],
     },
   },
+  {
+    files: ["netlify/**/*.ts"],
+    languageOptions: {
+      globals: globals.node,
+    },
+    rules: {
+      "react-refresh/only-export-components": "off",
+    },
+  },
 ]);

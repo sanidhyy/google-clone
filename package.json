@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=20"
+    "node": ">=22.12.0"
   },
   "scripts": {
     "dev": "vite",
@@ -14,6 +14,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@netlify/functions": "^6.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-loader-spinner": "^5.1.5",
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@netlify/vite-plugin": "^3.0.1",
     "@types/node": "^22.20.3",
     "@types/react": "^18.3.31",
     "@types/react-dom": "^18.3.7",
