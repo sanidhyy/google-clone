@@ -2,31 +2,36 @@
   "name": "google-clone",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "eslint ."
   },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "dotenv": "^16.0.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-loader-spinner": "^5.1.5",
-    "react-player": "^2.10.1",
-    "react-router-dom": "^6.3.0",
-    "react-scripts": "5.0.1",
-    "use-debounce": "^8.0.1",
-    "web-vitals": "^2.1.0"
+    "@netlify/functions": "^6.0.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-loader-spinner": "^8.0.2",
+    "react-router": "^7.18.4"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@netlify/vite-plugin": "^3.0.1",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^22.20.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "eslint": "^10.10.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.7",
+    "globals": "^17.12.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.70.0",
+    "vite": "^8.3.0"
   },
   "browserslist": {
     "production": [
@@ -39,10 +44,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.7",
-    "postcss": "^8.4.14",
-    "tailwindcss": "^3.1.4"
   }
 }

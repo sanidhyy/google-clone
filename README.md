@@ -1,4 +1,4 @@
-# Googl - A React JS Google Search Engine Clone
+# Googl - A React TypeScript Google Search Engine Clone
 
 ![React JS Google Clone](https://user-images.githubusercontent.com/71302066/175765913-09fb0722-9969-4682-bfa2-9581fcc0c5a2.png)
 
@@ -12,31 +12,31 @@
 
 ## ⚠️ Before you start
 
-1. Make sure **Git** and **NodeJS** is installed
-2. Create .env file in root folder.
+1. Make sure **Git** and **Node.js** are installed.
+2. Create `.env` file in root folder.
 3. Contents of **.env**
 
 ```
-REACT_APP_RAPID_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+RAPID_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
 4. Now, to setup API, go to [Rapid API Website](https://rapidapi.com/) and create an account.
 
-5. Subscribe to this API to fetch search results: [API: Real-Time SERP Data](https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-serp-data). The BASIC plan includes 100 free requests per month. Each search tab uses one request.
+5. Subscribe to this API to fetch search results: [API: Real-Time SERP Data](https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-serp-data).
 
 ![Copy API Key](https://user-images.githubusercontent.com/71302066/175766174-58a0779b-71ea-4f64-af87-2e23fedd0a7b.png)
 
-6. After subscribing, copy your RapidAPI app key and paste it in `.env` as `REACT_APP_RAPID_API_KEY`.
+6. After subscribing, copy your RapidAPI app key and paste it in `.env` as `RAPID_API_KEY`.
 
-**NOTE:** Make sure you don't share these keys publicaly.
+**NOTE:** Make sure you don't share these keys publically.
 
 ## 📌 How to use this App?
 
 1. Clone this **repository** to your local computer.
 2. Open **terminal** in root directory.
-3. Type and Run `npm install` or `pnpm install`.
-4. Once packages are installed, you can start this app using `npm run start` or `pnpm start`
-5. Now app is fully configured and you can start using this app :+1:
+3. Run `npm install` or `pnpm install`.
+4. Start the app with `npm run dev` `pnpm dev`.
+5. Now the app is fully configured and you can start using it.
 
 ### Need Help?
 
@@ -48,11 +48,15 @@ If you run into issues during installation or setup:
 
 ## 📃 Built with
 
-[<img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" width="150" height="40" />](https://www.javascript.com/)
+[<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" width="150" height="40" />](https://www.typescriptlang.org/)
 
-[<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" width="150" />](https://reactjs.org/)
+[<img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" width="150" />](https://vite.dev/)
+
+[<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" width="150" />](https://react.dev/)
 
 [<img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" width="150" />](https://tailwindcss.com/)
+
+[<img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" width="150" />](https://www.netlify.com/)
 
 [<img src="https://user-images.githubusercontent.com/71302066/174567516-824b1967-5954-4ac7-9446-14a3b2ab825d.svg" alt="Rapid API">](https://rapidapi.com/)
 
