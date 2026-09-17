@@ -22,11 +22,11 @@ REACT_APP_RAPID_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 4. Now, to setup API, go to [Rapid API Website](https://rapidapi.com/) and create an account.
 
-5. Enable this API to fetch google search results: [API: Google Search by apigeek](https://rapidapi.com/apigeek/api/google-search3/).
+5. Subscribe to this API to fetch search results: [API: Real-Time SERP Data](https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-serp-data). The BASIC plan includes 100 free requests per month. Each search tab uses one request.
 
 ![Copy API Key](https://user-images.githubusercontent.com/71302066/175766174-58a0779b-71ea-4f64-af87-2e23fedd0a7b.png)
 
-6. After enabling you can get your API Keys and paste them in `.env` file in `REACT_APP_RAPID_API_KEY`.
+6. After subscribing, copy your RapidAPI app key and paste it in `.env` as `REACT_APP_RAPID_API_KEY`.
 
 **NOTE:** Make sure you don't share these keys publicaly.
 

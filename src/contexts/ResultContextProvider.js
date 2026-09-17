@@ -1,60 +1,129 @@
 import React, { createContext, useContext, useState } from "react";
 
-// Create context
 const ResultContext = createContext();
 
-// API Base URL
-const baseURL = "https://google-search3.p.rapidapi.com/api/v1";
+const BASE_URL = "https://real-time-serp-data.p.rapidapi.com";
+const RAPID_API_HOST = "real-time-serp-data.p.rapidapi.com";
+const RESULT_LIMIT = 20;
 
-// Result Context Provider
+const ENDPOINTS = {
+  search: "/web/search-light",
+  images: "/images/search",
+  news: "/news/search",
+  videos: "/videos/search",
+};
+
+const matchYoutubeUrl = (url) => {
+  const pattern =
+    /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+  return Boolean(url?.match(pattern));
+};
+
+const buildUrl = (tab, searchTerm) => {
+  const params = new URLSearchParams({
+    gl: "us",
+    hl: "en",
+  });
+
+  if (tab === "search") {
+    params.set("q", searchTerm);
+    params.set("limit", String(RESULT_LIMIT));
+  } else {
+    params.set("query", searchTerm);
+  }
+
+  return `${BASE_URL}${ENDPOINTS[tab]}?${params.toString()}`;
+};
+
+const normalizeSearch = (payload) => {
+  const items = Array.isArray(payload)
+    ? payload
+    : payload?.organic_results ?? [];
+
+  return items
+    .filter((item) => item?.title && item?.url)
+    .map((item) => ({ title: item.title, link: item.url }));
+};
+
+const normalizeImages = (payload) => {
+  const items = Array.isArray(payload) ? payload : payload?.images ?? [];
+
+  return items
+    .filter((item) => item?.url)
+    .map((item) => ({
+      image: { src: item.url },
+      link: {
+        href: item.source_url || item.url,
+        title: item.title || "",
+      },
+    }));
+};
+
+const normalizeNews = (payload) => {
+  const items = Array.isArray(payload) ? payload : payload?.news ?? [];
+
+  return items
+    .filter((item) => item?.title && item?.link)
+    .map((item) => ({
+      title: item.title,
+      links: [{ href: item.link }],
+      source: { href: item.source_url || item.link },
+    }));
+};
+
+const normalizeVideos = (payload) => {
+  const items = Array.isArray(payload) ? payload : payload?.videos ?? [];
+
+  return items
+    .filter((item) => matchYoutubeUrl(item?.link))
+    .map((item) => ({ title: item.title, link: item.link }));
+};
+
+const normalizeResults = (tab, payload) => {
+  switch (tab) {
+    case "news":
+      return normalizeNews(payload);
+    case "images":
+      return normalizeImages(payload);
+    case "videos":
+      return normalizeVideos(payload);
+    default:
+      return normalizeSearch(payload);
+  }
+};
+
 export const ResultContextProvider = ({ children }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("Github");
 
-  // check youtube url
-  const matchYoutubeUrl = (url) => {
-    var p =
-      /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
-    if (url?.match(p)) {
-      return true;
-    }
-    return false;
-  };
+  const getResults = async (tab, term) => {
+    if (!ENDPOINTS[tab] || !term) return;
 
-  // fetch results from api
-  const getResults = async (type) => {
     setIsLoading(true);
 
-    const response = await fetch(`${baseURL}${type}`, {
-      method: "GET",
-      headers: {
-        "X-User-Agent": "desktop",
-        "X-Proxy-Location": "US",
-        "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
-        "X-RapidAPI-Host": "google-search3.p.rapidapi.com",
-      },
-    });
-
-    const data = await response.json();
-
-    // check data type
-    if (type.includes("/news")) {
-      setResults(data.entries);
-    } else if (type.includes("/image")) {
-      setResults(data.image_results);
-    } else if (type.includes("/video")) {
-      const filteredResults = [];
-      data.results?.map((result) => {
-        if (matchYoutubeUrl(result.link)) filteredResults.push(result);
+    try {
+      const response = await fetch(buildUrl(tab, term), {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
+          "X-RapidAPI-Host": RAPID_API_HOST,
+        },
       });
 
-      setResults(filteredResults);
-    } else {
-      setResults(data.results);
-    }
+      const body = await response.json();
 
-    setIsLoading(false);
+      if (!response.ok || body.status === "ERROR") {
+        setResults([]);
+        return;
+      }
+
+      setResults(normalizeResults(tab, body.data ?? body).slice(0, RESULT_LIMIT));
+    } catch {
+      setResults([]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

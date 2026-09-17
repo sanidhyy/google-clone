@@ -12,14 +12,10 @@ export const Results = () => {
 
   // fetch Results
   useEffect(() => {
-    if (searchTerm) {
-      if (location.pathname === "/videos") {
-        getResults(`/video/q=${searchTerm}&num=40`);
-      } else if (location.pathname === "/images") {
-        getResults(`/image/q=${searchTerm}&num=40`);
-      } else {
-        getResults(`${location.pathname}/q=${searchTerm}&num=40`);
-      }
+    const tab = location.pathname.slice(1);
+
+    if (searchTerm && ["search", "news", "images", "videos"].includes(tab)) {
+      getResults(tab, searchTerm);
     }
     // eslint-disable-next-line
   }, [searchTerm, location.pathname]);
@@ -46,7 +42,7 @@ export const Results = () => {
               <a href={link} target="_blank" rel="noreferrer">
                 {/* Link */}
                 <p className="text-sm">
-                  {link.length > 30 ? link.substring(0, 30) : link}
+                  {link?.length > 30 ? link.substring(0, 30) : link}
                 </p>
                 {/* Title */}
                 <p className="text-lg hover:underline dark:text-blue-300 text-blue-700">
